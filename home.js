@@ -1,16 +1,3 @@
-document.getElementById("login-button").addEventListener("click", function(event) {
-    let nameInput = document.getElementById("floatingInput").value.trim();
-    
-    if (nameInput === "") {
-        event.preventDefault(); // Stops redirection
-        alert("Please enter your name before proceeding!");
-    } else {
-        // Store the name in localStorage to use on other pages if needed
-        localStorage.setItem("userName", nameInput);
-        document.getElementById("login-link").href = "./main.html"; // Allow redirection
-    }
-});
-
 let table = document.getElementById("table")
 console.log("table",table)
 
@@ -22,15 +9,31 @@ function deleteRow(row){
 // Function to add a new row
 function addRow(){
 
-    let date = document.getElementsByClassName("dateInput")[0].value
-    let amount = document.getElementsByClassName("amountInput")[0].value 
-    let transaction = document.getElementsByClassName("transactionType")[0].value 
+    // let date = document.getElementsByClassName("dateInput")[0].value
+    // let amount = document.getElementsByClassName("amountInput")[0].value 
+    // let transaction = document.getElementsByClassName("transactionType")[0].value 
 
+    let dateInput = document.getElementsByClassName("dateInput")[0];
+    let amountInput = document.getElementsByClassName("amountInput")[0];
+    let transactionInput = document.getElementsByClassName("transactionType")[0];
+
+    let date = dateInput.value;
+    let amount = amountInput.value;
+    let transaction = transactionInput.value;
     
     if (date.trim() === "" || amount.trim() === "") {
         alert("Please enter both date and amount.");
         return; // Stop function execution
     }
+
+    // Check if amount is a valid number
+    if (isNaN(amount) || amount <= 0) {
+        alert("Please enter a valid positive number for the amount.");
+        return; // Stop function execution
+    }
+
+    amount = parseFloat(amount); 
+
     let row =document.createElement("tr")
 
     let amountCell = document.createElement("td")
@@ -76,7 +79,7 @@ function addRow(){
         }
         else
         {
-            document.getElementById("total-income").innerText=parseInt(totalIncome)+parseInt(amount)
+            document.getElementById("total-income").innerText=parseFloat(totalIncome)+parseFloat(amount)
         }
         if(balance=="0")
         {
@@ -84,7 +87,7 @@ function addRow(){
         }
         else
         {
-            document.getElementById("balance").innerText=parseInt(balance)+parseInt(amount)
+            document.getElementById("balance").innerText=parseFloat(balance)+parseFloat(amount)
         }
     }
     else if(transaction=="Expense")
@@ -95,7 +98,7 @@ function addRow(){
         }
         else
         {
-            document.getElementById("total-Expense").innerText=parseInt(totalExpense)+parseInt(amount);
+            document.getElementById("total-Expense").innerText=parseFloat(totalExpense)+parseFloat(amount);
         }
         if(balance=="0")
         {
@@ -103,20 +106,13 @@ function addRow(){
         }
         else
         {
-            document.getElementById("balance").innerText=parseInt(balance)-parseInt(amount)
+            document.getElementById("balance").innerText=parseFloat(balance)-parseFloat(amount)
         }
     }
 
+     // **Clear input fields after adding a row**
+     dateInput.value = "";
+     amountInput.value = "";
+     transactionInput.value = "Transaction Type"; // Reset to default selection
+   
 }
-
-document.getElementById("login-button").addEventListener("click", function(event) {
-    let nameInput = document.getElementById("floatingInput").value.trim();
-    
-    if (nameInput === "") {
-        event.preventDefault(); // Prevents navigation
-        alert("Please enter your name before proceeding!");
-    } else {
-        // Store the name in localStorage to use on other pages if needed
-        localStorage.setItem("userName", nameInput);
-    }
-});

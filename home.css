@@ -63,19 +63,20 @@ body{
 
 @media only screen and (max-width:768px){
     .solid-circle{
-        background-color: black;
-        height: 300px;
-        width: 300px;
+        background-color: rgb(209, 81, 209);
+        height: 310px;
+        width: 320px;
         top: -140px;
         right: -140px;
     }
     #name{
-        color: black;
+        color: rgb(209, 81, 209);
     }
     #login-button{
-        background-color: black;
+        background-color: rgb(209, 81, 209);
     }
     #click-button{
-        color: black;
+        color: rgb(209, 81, 209);
+        height: 60px;
     }
 }
