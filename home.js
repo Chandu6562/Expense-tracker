@@ -50,7 +50,7 @@ function addRow(){
     let deleteButton = document.createElement("button")
 
     let binImage= document.createElement("img")
-    binImage.src="C:/Users/hp/Desktop/Expense Tracker/Expense Tracker Files/recycle-bin.png"
+    binImage.src="Expense Tracker Files/recycle-bin.png"
     binImage.style.width="25px";
     binImage.style.height="25px";
     deleteButton.classList.add("delete-button")
